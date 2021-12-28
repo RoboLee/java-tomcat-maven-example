@@ -1,0 +1,11 @@
+FROM robolee/tomcat-proxy:jre11-openjdk
+MAINTAINER Le Cong Huy <huy.lecong@vn.bosch.com>
+
+USER root
+WORKDIR /root
+
+ADD ./*.war /usr/local/tomcat/webapps/
+RUN mv /usr/local/tomcat/webapps/*.war /usr/local/tomcat/webapps/webapp.war
+RUN ls -la /usr/local/tomcat/webapps/
+
+CMD ["catalina.sh", "run"]
